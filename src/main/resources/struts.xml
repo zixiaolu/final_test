@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+
+
+    <package name="default" extends="struts-default">
+        <interceptors>
+            <interceptor name="login_interceptor" class="interceptor.LoginInterceptor"></interceptor>
+        </interceptors>
+        <action name="login" class="action.Loginaction">
+            <result name="success">welcomeRegister.jsp</result>
+            <result name="failed">failed.jsp</result>
+            <interceptor-ref name="login_interceptor"></interceptor-ref>
+        </action>
+
+        <action name="allbook" class="action.Bookgetaction">
+            <result name="find_all">allbook.jsp</result>
+        </action>
+
+        <action name="findbook" class="action.Bookfindaction">
+            <result name="find_one">info.jsp</result>
+        </action>
+    </package>
+</struts>
